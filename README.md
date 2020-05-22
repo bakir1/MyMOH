@@ -1,2 +1,0 @@
-# MyMOH
-mobile application 
