@@ -17,11 +17,19 @@ mobile application
 6.Login: Universal user icon. (wait to login).Inputs field email and password. Enter with an email and password.Login button.
 
 Planning to do on this app:
+
 1 -- Connect to firebase(Register,login,...)
+
 2 -- Navigation header 
+
 3 -- Add a post
+
 4 -- Add post - to database connect 
+
 5 -- Configure post (information about that post)
+
 6 -- Create buttons on the main page (add post button, search, more information, main setting, some title on the main page)
+
 7 -- Create slide navbar 
+
 8 -- Adding buttons on navbar (user photo, name, email, buttons(home,settings,some chat, log out).
