@@ -1,2 +1,2 @@
-rootProject.name='MyMOH'
+rootProject.name='MyMOHapp'
 include ':app'
