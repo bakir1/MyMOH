@@ -70,7 +70,7 @@ public class AddPostActivity extends AppCompatActivity
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Add Post");
-        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         pd = new ProgressDialog(this);
@@ -127,12 +127,11 @@ public class AddPostActivity extends AppCompatActivity
             //here create the reference of storage in firebase, have already added the libraries
             StorageReference reference = FirebaseStorage.getInstance().getReference().child(filepath);
             reference.putBytes(data)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>()
-                    {
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>(){
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                            while (uriTask.isSuccessful());
+                            while (!uriTask.isSuccessful());
                             //here uri.Tast is not success to end the while loop so put not equal to sing
 
                             String downloadUri = uriTask.getResult().toString();
@@ -155,8 +154,7 @@ public class AddPostActivity extends AppCompatActivity
                                 //upload data to firebase
                                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Posts");
                                 ref.child(timeStamp).setValue(hashMap)
-                                        .addOnSuccessListener(new OnSuccessListener<Void>()
-                                        {
+                                        .addOnSuccessListener(new OnSuccessListener<Void>(){
                                             @Override
                                             public void onSuccess(Void aVoid){
                                                 pd.dismiss();
@@ -230,7 +228,7 @@ public class AddPostActivity extends AppCompatActivity
     private void galleryPick()
     {
         Intent intent = new Intent(Intent.ACTION_PICK);
-        //this is for all tape of images (warnings: on create speeling mistake)
+        //for all types of images
         intent.setType("image/*");
         startActivityForResult(intent, GALLERY_IMAGE_CODE);
 
